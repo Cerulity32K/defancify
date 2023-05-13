@@ -13,7 +13,7 @@ The enum that represents the replacements is specified as such:\
 - Str - Multi character replacement
 - AmbiChr - Ambiguous single character replacement (ordered by likeliness)
 - AmbiStr - Ambiguous multi character replacement (ordered by likeliness)
-- None - Illegible, zero-sized, and most combining characters which cannot or should not be represented.
+- None - Illegible, zero-sized, most combining characters, and others which cannot or should not be represented.
 
 You can choose a Unicode block (https://symbl.cc/en/unicode/blocks/ recommended) and, where S is the length of the plane, make a [Rep; S] sequentially containing each character (first item = first character in the block). It is recommended to use comments to signify segments of a block. You can look at the examples in `str_subs`.
 

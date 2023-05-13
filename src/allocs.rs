@@ -8,7 +8,8 @@ use alloc::string::{String, ToString};
 use crate::types::{Rep, BlockFlags, RepNoneContext};
 use crate::chmatch;
 
-/// Intakes a function that can mutate the output string when a disabled/unmapped character is met, along with the context.
+/// Intakes a function that can mutate the output string when a disabled/unmapped character is met, along with the context.\
+/// The function should push characters; you receive the full string in the function.
 /// Other defancifying functions in this crate use preset functions.
 pub fn defancify(st: &str, flags: Option<BlockFlags>, f: fn(&mut String, char, RepNoneContext)) -> String {
     let mut out: String = String::new();
@@ -44,6 +45,10 @@ pub fn defancify_keep(st: &str, flags: Option<BlockFlags>) -> String {
 /// Discards all disabled/unmapped characters.
 pub fn defancify_discard(st: &str, flags: Option<BlockFlags>) -> String {
     defancify(st, flags, |_, _, _|())
+}
+/// Replaces all disabled/unmapped characters with '?'.
+pub fn defancify_lossy(st: &str, flags: Option<BlockFlags>) -> String {
+    defancify(st, flags, |s, _, _|s.push('?'))
 }
 
 impl<'a, 'b> Rep<'a, 'b> {
