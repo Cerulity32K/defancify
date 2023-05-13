@@ -17,6 +17,6 @@ The enum that represents the replacements is specified as such:\
 
 You can choose a Unicode block (https://symbl.cc/en/unicode/blocks/ recommended) and, where S is the length of the plane, make a [Rep; S] sequentially containing each character (first item = first character in the block). It is recommended to use comments to signify segments of a block. You can look at the examples in `str_subs`.
 
-Once a block is implemented, add it to the `lib.rs` `chmatch` function with the block's boundaries, to `tests.rs` as a new function and in the `length` function, and to `types.rs` in the `BlockFlags` definition and the `Default` & normal implementation.
+Once a block is implemented, add it to the `lib.rs` `chmatch` function with the block's boundaries, to `tests.rs` as a new function as well as in the `length` function, and to `types.rs` in the `BlockFlags` definition, a new setter function for it (use the `flag!` macro for this), the `none` function and the `Default` implementation for it.
 
 See examples in the `str_subs` module.

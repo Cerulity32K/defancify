@@ -28,6 +28,7 @@ pub struct BlockFlags {
     pub spacing_modifier_letters: bool
 }
 impl Default for BlockFlags {
+    /// Sets all flags to true.
     fn default() -> Self {
         BlockFlags {
             latin_extended_a: true,
@@ -42,6 +43,13 @@ impl BlockFlags {
     flag!{latin_extended_b}
     flag!{ipa_extensions}
     flag!{spacing_modifier_letters}
+    pub fn none() -> Self {
+        BlockFlags {
+            latin_extended_a: false,
+            latin_extended_b: false,
+            ipa_extensions: false,
+            spacing_modifier_letters: false }
+    }
 }
 
 /// Substitution enum. Some substitutions require multiple characters, but most do not and can be represented as chars.
