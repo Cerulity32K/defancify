@@ -2,6 +2,7 @@
 //! This module has no `alloc` based implementations. `allocs` contains implementations which require `alloc`.
 
 /// For use in the main `defancify` function, provides context to None arms
+#[derive(Debug, Clone, Copy)]
 pub enum RepNoneContext {
     /// For when a `Rep::AmbiStr` value has no choices
     NoStrChoices,

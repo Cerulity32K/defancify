@@ -22,6 +22,7 @@ type StaticRep = Rep<'static, 'static>;
 
 pub fn chmatch(i: char, blocks: &BlockFlags) -> Option<StaticRep> {
     match i {
+        '\u{0000}'..='\u{00ff}' => Some(Rep::Chr(i)),
         '\u{0100}'..='\u{017f}' if blocks.latin_extended_a => sub!(i, '\u{0100}', LATIN_EXTENDED_A),
         '\u{0180}'..='\u{024f}' if blocks.latin_extended_b => sub!(i, '\u{0180}', LATIN_EXTENDED_B),
         '\u{0250}'..='\u{02af}' if blocks.ipa_extensions => sub!(i, '\u{0250}', IPA_EXTENSIONS),
